@@ -9,7 +9,7 @@ use Magento\Eav\Setup\EavSetupFactory;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 
-class SetTelephoneAttributeOptional implements DataPatchInterface
+class SetPhoneNumberAttributeOptional implements DataPatchInterface
 {
     /**
      * @var EavSetupFactory
@@ -33,7 +33,7 @@ class SetTelephoneAttributeOptional implements DataPatchInterface
     public static function getDependencies(): array
     {
         return [
-            CreateTelephoneAttribute::class
+            CreatePhoneNumberAttribute::class
         ];
     }
 
@@ -54,7 +54,7 @@ class SetTelephoneAttributeOptional implements DataPatchInterface
 
         $eavSetup->updateAttribute(
             Customer::ENTITY,
-            CreateTelephoneAttribute::TELEPHONE,
+            CreatePhoneNumberAttribute::PHONE_NUMBER,
             'is_required',
             false
         );

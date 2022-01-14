@@ -12,9 +12,9 @@ use Magento\Eav\Setup\EavSetupFactory;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 
-class CreateTelephoneAttribute implements DataPatchInterface
+class CreatePhoneNumberAttribute implements DataPatchInterface
 {
-    public const TELEPHONE = 'telephone';
+    public const PHONE_NUMBER = 'phone_number';
 
     /**
      * @var EavSetupFactory
@@ -65,7 +65,7 @@ class CreateTelephoneAttribute implements DataPatchInterface
 
         $eavSetup->addAttribute(
             Customer::ENTITY,
-            self::TELEPHONE,
+            self::PHONE_NUMBER,
             [
                 'type' => 'text',
                 'label' => 'Phone Number',
@@ -78,8 +78,8 @@ class CreateTelephoneAttribute implements DataPatchInterface
             ]
         );
 
-        $telephoneAttribute = $this->eavConfig->getAttribute(Customer::ENTITY, self::TELEPHONE);
-        $telephoneAttribute->setData(
+        $phoneNumberAttribute = $this->eavConfig->getAttribute(Customer::ENTITY, self::PHONE_NUMBER);
+        $phoneNumberAttribute->setData(
             'used_in_forms',
             [
                 'adminhtml_customer',
@@ -88,6 +88,6 @@ class CreateTelephoneAttribute implements DataPatchInterface
             ]
         );
 
-        $this->attributeResource->save($telephoneAttribute);
+        $this->attributeResource->save($phoneNumberAttribute);
     }
 }
