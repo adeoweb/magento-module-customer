@@ -1,5 +1,19 @@
 stages:
+  - quality
   - deploy
+
+default:
+  interruptible: true
+
+image: gitlab.adeoweb.biz:8443/adeoweb/devops/magento-docker/magento-php:7.4-builder
+
+quality:
+  stage: quality
+  before_script:
+    - cp $AUTH /root/.composer/auth.json
+    - chmod 400 /root/.composer/auth.json
+  script:
+    - make ci-composer-dev ci-check-style ci-unit-test
 
 deploy:
   stage: deploy

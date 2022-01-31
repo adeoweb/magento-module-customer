@@ -1,0 +1,7 @@
+/Test
+.dockerignore export-ignore
+.gitignore export-ignore
+.gitlab-ci.yml export-ignore
+Makefile export-ignore
+phpcs.xml export-ignore
+phpunit.xml export-ignore

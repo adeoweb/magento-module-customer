@@ -30,24 +30,11 @@ class SetPhoneNumberAttributeOptional implements DataPatchInterface
     /**
      * @inheritdoc
      */
-    public static function getDependencies(): array
-    {
-        return [
-            CreatePhoneNumberAttribute::class
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
     public function getAliases(): array
     {
         return [];
     }
 
-    /**
-     * @inheritdoc
-     */
     public function apply(): void
     {
         $eavSetup = $this->eavSetupFactory->create(['setup' => $this->moduleDataSetup]);
@@ -58,5 +45,15 @@ class SetPhoneNumberAttributeOptional implements DataPatchInterface
             'is_required',
             false
         );
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public static function getDependencies(): array
+    {
+        return [
+            CreatePhoneNumberAttribute::class
+        ];
     }
 }

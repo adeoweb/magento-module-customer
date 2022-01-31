@@ -6,7 +6,6 @@ namespace AdeoWeb\Customer\Setup\Patch\Data;
 
 use Magento\Customer\Model\ResourceModel\Attribute as AttributeResource;
 use Magento\Eav\Model\Config as EavConfig;
-use Magento\Eav\Setup\EavSetup;
 use Magento\Eav\Setup\EavSetupFactory;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
@@ -47,11 +46,9 @@ class CreateCustomerNotesAttribute implements DataPatchInterface
         $this->attributeResource = $attributeResource;
     }
 
-    public static function getDependencies(): array
-    {
-        return [];
-    }
-
+    /**
+     * @inheritDoc
+     */
     public function getAliases(): array
     {
         return [];
@@ -59,7 +56,6 @@ class CreateCustomerNotesAttribute implements DataPatchInterface
 
     public function apply(): void
     {
-        /** @var EavSetup $eavSetup */
         $eavSetup = $this->eavSetupFactory->create(['setup' => $this->moduleDataSetup]);
 
         $eavSetup->addAttribute(
@@ -91,5 +87,13 @@ class CreateCustomerNotesAttribute implements DataPatchInterface
         );
 
         $this->attributeResource->save($customerNotesAttribute);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public static function getDependencies(): array
+    {
+        return [];
     }
 }
