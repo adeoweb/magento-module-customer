@@ -14,12 +14,12 @@ class Customer extends BaseCustomer
         $select = $connection->select();
         $select->from(
             ['customer' => $this->getEntityTable()],
-            ['group.tax_class_id']
+            ['group.tax_class_id'],
         );
         $select->joinInner(
             ['group' => $connection->getTableName('customer_group')],
             'customer.group_id = group.customer_group_id',
-            []
+            [],
         );
         $select->where('customer.entity_id = ?', $customerId);
 

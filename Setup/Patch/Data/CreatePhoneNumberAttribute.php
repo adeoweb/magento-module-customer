@@ -39,7 +39,7 @@ class CreatePhoneNumberAttribute implements DataPatchInterface
         EavSetupFactory $categorySetupFactory,
         ModuleDataSetupInterface $moduleDataSetup,
         EavConfig $eavConfig,
-        AttributeResource $attributeResource
+        AttributeResource $attributeResource,
     ) {
         $this->eavSetupFactory = $categorySetupFactory;
         $this->moduleDataSetup = $moduleDataSetup;
@@ -71,7 +71,7 @@ class CreatePhoneNumberAttribute implements DataPatchInterface
                 'user_defined' => false,
                 'position' => 999,
                 'system' => 0,
-            ]
+            ],
         );
 
         $phoneNumberAttribute = $this->eavConfig->getAttribute(Customer::ENTITY, self::PHONE_NUMBER);
@@ -80,8 +80,8 @@ class CreatePhoneNumberAttribute implements DataPatchInterface
             [
                 'adminhtml_customer',
                 'customer_account_create',
-                'customer_account_edit'
-            ]
+                'customer_account_edit',
+            ],
         );
 
         $this->attributeResource->save($phoneNumberAttribute);

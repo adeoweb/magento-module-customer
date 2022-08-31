@@ -1,54 +1,8 @@
 <?xml version="1.0"?>
 <ruleset>
     <rule ref="./vendor/adeoweb/adeo-coding-style-php/src/AdeoWebCodingStandard/ruleset.xml"/>
-    <!-- General PHP (7.1) -->
-    <rule ref="SlevomatCodingStandard.Functions.RequireArrowFunction.RequiredArrowFunction">
+    <rule ref="SlevomatCodingStandard.Functions.FunctionLength">
         <exclude-pattern>*.php$</exclude-pattern>
-    </rule>
-    <rule ref="SlevomatCodingStandard.Functions.TrailingCommaInCall.MissingTrailingComma">
-        <exclude-pattern>*.php$</exclude-pattern>
-    </rule>
-    <rule ref="SlevomatCodingStandard.Arrays.TrailingArrayComma.MissingTrailingComma">
-        <exclude-pattern>*.php$</exclude-pattern>
-    </rule>
-    <rule ref="SlevomatCodingStandard.Functions.TrailingCommaInCall">
-        <exclude-pattern>*.php$</exclude-pattern>
-    </rule>
-    <rule ref="SlevomatCodingStandard.TypeHints.DeclareStrictTypes.DeclareStrictTypesMissing">
-        <exclude-pattern>*Interface.php$</exclude-pattern>
-    </rule>
-    <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHint.UselessAnnotation">
-        <exclude-pattern>*Interface.php$</exclude-pattern>
-    </rule>
-    <!-- Swagger -->
-    <rule ref="SlevomatCodingStandard.Commenting.UselessFunctionDocComment">
-        <exclude-pattern>*/(Service|Api)/*.php$</exclude-pattern>
-    </rule>
-    <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHint.UselessAnnotation">
-        <exclude-pattern>*/(Service|Api)/*.php$</exclude-pattern>
-    </rule>
-    <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHint.UselessAnnotation">
-        <exclude-pattern>*/(Service|Api)/*.php$</exclude-pattern>
-    </rule>
-    <rule ref="SlevomatCodingStandard.TypeHints.DisallowMixedTypeHint.DisallowedMixedTypeHint">
-        <exclude-pattern>*/(Service|Api)/*.php$</exclude-pattern>
-    </rule>
-    <!-- Plugin -->
-    <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint">
-        <exclude-pattern>*/Plugin/*.php$</exclude-pattern>
-    </rule>
-    <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingAnyTypeHint">
-        <exclude-pattern>*/Plugin/*.php$</exclude-pattern>
-    </rule>
-    <rule ref="SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingTraversableTypeHintSpecification">
-        <exclude-pattern>*/Plugin/*.php$</exclude-pattern>
-    </rule>
-    <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter">
-        <exclude-pattern>*/Plugin/*.php$</exclude-pattern>
-    </rule>
-    <!-- Resolver -->
-    <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter">
-        <exclude-pattern>*/Resolver/*.php$</exclude-pattern>
     </rule>
     <ini name="memory_limit" value="64M"/>
     <arg name="extensions" value="php,phtml"/>

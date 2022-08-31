@@ -43,7 +43,7 @@ class SetPhoneNumberAttributeOptional implements DataPatchInterface
             Customer::ENTITY,
             CreatePhoneNumberAttribute::PHONE_NUMBER,
             'is_required',
-            false
+            false,
         );
     }
 
@@ -53,7 +53,7 @@ class SetPhoneNumberAttributeOptional implements DataPatchInterface
     public static function getDependencies(): array
     {
         return [
-            CreatePhoneNumberAttribute::class
+            CreatePhoneNumberAttribute::class,
         ];
     }
 }

@@ -38,7 +38,7 @@ class CreateAddressNameAttribute implements DataPatchInterface
         EavSetupFactory $categorySetupFactory,
         ModuleDataSetupInterface $moduleDataSetup,
         EavConfig $eavConfig,
-        AttributeResource $attributeResource
+        AttributeResource $attributeResource,
     ) {
         $this->eavSetupFactory = $categorySetupFactory;
         $this->moduleDataSetup = $moduleDataSetup;
@@ -73,7 +73,7 @@ class CreateAddressNameAttribute implements DataPatchInterface
                 'visible_on_front' => true,
                 'position' => 999,
                 'system' => false,
-            ]
+            ],
         );
 
         $addressNameAttribute = $this->eavConfig->getAttribute('customer_address', self::ADDRESS_NAME);
@@ -82,8 +82,8 @@ class CreateAddressNameAttribute implements DataPatchInterface
             [
                 'adminhtml_customer_address',
                 'customer_address_edit',
-                'customer_register_address'
-            ]
+                'customer_register_address',
+            ],
         );
 
         $this->attributeResource->save($addressNameAttribute);
