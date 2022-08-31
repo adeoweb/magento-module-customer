@@ -5,7 +5,7 @@
 PHP
 
 ```
-^7.1
+7.3|7.4
 ```
 
 Magento
@@ -19,7 +19,7 @@ Magento
 Install with composer
 
 ```
-composer require adeoweb/module-customer
+composer require adeoweb/magento-module-customer
 ```
 
 Enable module

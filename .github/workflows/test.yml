@@ -1,0 +1,50 @@
+name: test
+
+on:
+  - push
+#  push:
+#    branches: [ $default-branch ]
+#  pull_request:
+#    branches: [ $default-branch ]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        version: ["7.3", "7.4"]
+    runs-on: ubuntu-latest
+    env:
+      MAGENTO_USERNAME: ${{ secrets.MAGENTO_USERNAME }}
+      MAGENTO_PASSWORD: ${{ secrets.MAGENTO_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup PHP with specific version of PECL extension
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.version }}
+          tools: composer
+          extensions: bcmath gd intl xsl
+
+      - run: composer config http-basic.repo.magento.com ${MAGENTO_USERNAME} ${MAGENTO_PASSWORD}
+
+      - name: Validate composer.json
+        run: composer validate --strict
+
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v3
+        with:
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.json') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
+
+      - name: Install dependencies
+        run: make ci-composer-dev
+
+      - name: Run Unit Tests
+        run: make ci-unit-test
+
+      - name: Static analysis
+        run: make ci-check-style
